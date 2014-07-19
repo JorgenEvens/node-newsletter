@@ -1,0 +1,12 @@
+extends /page
+
+include /components/form
+
+block content
+	section.wrap.row
+		fieldset.col.col-1-2.offset-1-4
+			legend Login
+			form(action='?',method='POST')
+				+form-text('username','Username')(value=username)
+				+form-text('password','Password','password')
+				+form-submit('Login')

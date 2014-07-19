@@ -18,9 +18,9 @@ module.exports = function(grunt) {
 						function refresh() {
 							fs.writeFileSync('.rebooted', 'rebooted');
 						};
-						
+
 						nodemon.on('restart', function() {
-							setTimeout(refresh, 1000);
+							setTimeout(refresh, 250);
 						});
 					}
 				}
@@ -34,9 +34,11 @@ module.exports = function(grunt) {
 				},
 				options: {
 					urlfunc: 'embed',
-					compress: true,
+					compress: false,
 					lineos: true,
-					use: ['nib']
+					use: [
+						require('fluidity')
+					]
 				}
 			}
 		},

@@ -2,16 +2,17 @@ doctype html
 html
 	head
 		title= 'node-newsletter : ' + title
-		link(href='css/main.min.css', rel='stylesheet')
+		link(href='/css/main.min.css', rel='stylesheet')
+		meta(name='viewport',content='width=device-width,initial-scale=1')
 
 	body
-		div#wrapper
-			header
-				h1= title
+		header.row
+			if authenticated
+				include nav/internal.jade
+			else
+				include nav/main.jade
 			
-			block content
+		block content
 
-			footer
-				footer
-
-
+		footer.wrap.row
+			.col footer

@@ -1,0 +1,27 @@
+mixin form-text(name,label,type)
+	.form-line
+		label= label
+			input(type=type||'text',name=name)&attributes(attributes)
+
+mixin form-checkbox(name,label,checked)
+	- if( checked ) attributes.checked = 'checked';
+	.form-line
+		label
+			input(type='checkbox',value='on',name=name)&attributes(attributes)
+			= label
+
+mixin form-radio(name,label,value,selected)
+	- if( selected ) attributes.checked = 'checked';
+	.form-line
+		label
+			input(type='radio',name=name,value=value)&attributes(attributes)
+			= label
+
+mixin form-button(name,text,type)
+	- if(typeof text === 'undefined') { text = name; name = null }
+	- if( name ) attributes.name = name
+	.form-line
+		button(type=type||'button')&attributes(attributes)= text
+
+mixin form-submit(name,text)
+	+form-button(name,text,'submit')&attributes(attributes)

@@ -1,0 +1,8 @@
+mixin item(text,link)
+	li
+		a(href=link)= text
+
+nav.wrap.main
+	ul.col
+		+item('Home','/')
+		+item('Login','/authentication/login')

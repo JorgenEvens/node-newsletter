@@ -20,9 +20,13 @@
   },
   "homepage": "https://github.com/JorgenEvens/node-newsletter",
   "dependencies": {
+    "body-parser": "^1.4.3",
     "express": "^4.6.1",
+    "express-session": "^1.6.5",
     "lodash": "^2.4.1",
-    "sequelize": "^1.7.9"
+    "mysql": "^2.4.1",
+    "sequelize": "^1.7.9",
+    "stylus": "^0.47.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

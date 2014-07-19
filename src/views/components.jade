@@ -1,0 +1,32 @@
+extends ./page
+
+include components/all
+
+block content
+	section.wrap
+		h1 Components
+
+		h2 Forms
+
+		fieldset
+			legend Text field
+			+form-text('name','Your name')(placeholder='John Doe')
+			+form-text('email','Your e-mail')(placeholder='john.doe@gmail.com')
+
+		fieldset
+			legend Checkbox
+			+form-checkbox('subscribe','Would you like to subscribe?',false)
+			+form-checkbox('free-gadget','Do you care for a t-shirt?',true)
+
+		fieldset
+			legend Radiobox
+			+form-radio('source','Youtube','youtube',true)
+			+form-radio('source','Twitter','twitter')
+			+form-radio('source','Facebook','facebook')
+
+		fieldset
+			legend Buttons
+			form(action='javascript:alert("worked!")')
+				+form-button('Push me')
+				+form-button('Push me now!')
+				+form-submit('Send')

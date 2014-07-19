@@ -1,0 +1,53 @@
+/**
+ * Inspired by
+ * http://www.responsivegridsystem.com/
+ *
+ * Author: Jorgen Evens <jorgen@evens.eu>
+ */
+
+column-class-prefix = 'col-'
+offset-class-prefix = 'offset-'
+
+grid(grid-columns=12,gutter-width=1.6%)
+
+	.row
+		width: 100%
+		overflow: hidden
+
+	.col
+		margin-left: gutter-width
+		float: left
+		box-sizing: border-box
+
+		&:first-child
+			margin-left: 0
+
+	.{column-class-prefix}100
+		width: 100%
+
+	for $cols in (2..grid-columns)
+		for $col in (1...$cols)
+			$div = ( $cols / $col )
+			if round( $div ) != $div || $col == 1
+				$width = 100%
+				$width = ( ($width / $cols) * $col )
+
+				.{column-class-prefix}{$col}-{$cols}
+					+cache('grid-w' + $width)
+						width: $width - gutter-width
+
+				.{offset-class-prefix}{$col}-{$cols}
+					margin-left: $width
+
+					&:first-child
+						margin-left: $width
+
+
+		@media only screen and (max-width: 480px)
+			for $cols in (2..grid-columns)
+				for $col in (1...$cols)
+					if round( ( $cols / $col ) ) == ($cols/$col)
+						.{$col}-{$cols}
+							+cache('grid-mobile-100')
+								width: 100%
+								margin: 0

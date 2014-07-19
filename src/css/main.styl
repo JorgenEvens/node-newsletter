@@ -1,11 +1,54 @@
 @import 'nib'
 @import 'theme/default.styl'
+@import 'helper.styl'
+@import 'grid.styl'
 
 global-reset()
 reset-html5()
+
+// Setup grid functionality for up to 12 columns
+grid(6)
 
 html, body
 	background: $background
 	color: $text
 	font-family: $font-family
 	font-size: $font-size
+
+header
+	float: none
+	margin: 0 auto
+	background: $highlight1
+	border-bottom: 3px solid $highlight2
+	margin-bottom: 20px
+
+for $h in (1..6)
+	h{$h}
+		$s = $h - 1
+		font-size: $title-max-size - ( $s * $title-shrink-factor )
+		margin-bottom: $title-margin
+
+.wrap
+	max-width: 960px
+	margin: 0 auto
+
+.col
+	padding: $padding
+
+nav.main 
+	li
+		float: left
+		padding: $padding
+
+	a 
+		text-decoration: none
+		text-transform: lowercase
+		color: $text-contrast
+
+		&:visited, &:active
+			color: $text-contrast
+
+		&:hover
+			text-decoration: underline
+
+@import 'form'

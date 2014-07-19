@@ -1,6 +1,54 @@
+/**
+ * Colors
+ */
 $background = #e6e6e6
+$highlight1 = #5989ff
+$highlight2 = #2d4691
+
+/**
+ * Text styling
+ */
 $text = #272822
-$highlight = #5989ff
-$font-family = "Arial, sans-serif"
+$text-contrast = #FFF
+$font-family = Arial, sans-serif
 $font-size-default = "14px"
 $font-size = $font-size-default
+
+/**
+ * Padding used throughout the styling
+ */
+$padding-default = 0.3em 1em
+$padding = $padding-default
+
+// Styling of h-tags is based on this
+
+/**
+ * The font-size of the largest h-tag
+ * @type {[type]}
+ */
+$title-max-size = 24px
+
+/**
+ * The font-size of the h-tag is calculated as follows
+ * $title-max-size - ( $title-shrink-factor * tagnumber )
+ */
+$title-shrink-factor = 2
+
+/**
+ * The margin on the bottom of a h-tag
+ */
+$title-margin = 0.8em
+
+/**
+ * The maximum width of a form item.
+ * Every text input field is aligned to
+ * the right of a form line, each form
+ * line is maximum $form-max-width wide
+ */
+$form-max-width = 400px
+
+/**
+ * Controls the width of the text input field
+ * relative to the size of $form-max-width
+ */
+$form-field-width = 60%

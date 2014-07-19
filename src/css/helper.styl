@@ -1,0 +1,9 @@
+// http://zsitro.com/inline-block-with-conditional-ie-support/
+display(mode, args...)
+  if mode == 'inline-block'
+    display inline-block args
+    if support-for-ie
+      zoom 1
+      *display inline args
+  else
+    display mode args
