@@ -18,12 +18,16 @@ legend
 	label
 		display: block
 
-	input
+	input, textarea, .ace_editor
 		float: right
 		width: $form-field-width
+		max-width: $form-field-width
 		border: 1px solid $highlight1
 		background: white
 		padding: $padding
+
+	.ace_editor
+		height: 200px
 
 input[type=checkbox],
 input[type=radio]

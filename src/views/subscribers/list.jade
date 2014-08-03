@@ -1,0 +1,31 @@
+extends /page
+
+block content
+	section.wrap.row
+		if subscribers && subscribers.length > 0
+			form(action="?",method="POST")
+				table.col.col-5-6
+					thead
+						tr
+							th Name
+							th Confirmed
+							th Created
+							th Actions
+
+					tfoot
+						tr
+							td(colspan=4)
+								a(href='/subscriber/create') Add another subscriber
+
+					tbody
+						each subscriber in subscribers
+							tr
+								td= subscriber.name
+								td= subscriber.confirmed ? "Yes" : "No"
+								td= subscriber.createdAt
+								td
+									button(type='submit',name="delete",value=subscriber.id) delete
+									button(type='submit',name='edit',value=subscriber.id) edit
+		else
+			p.col You have not added any subscribers, 
+				a(href='/subscribers/create') add one now.

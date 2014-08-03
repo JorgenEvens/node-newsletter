@@ -25,3 +25,9 @@ mixin form-button(name,text,type)
 
 mixin form-submit(name,text)
 	+form-button(name,text,'submit')&attributes(attributes)
+
+mixin form-textarea(name,label,content)
+	.form-line
+		label
+			= label
+			textarea(name=name)&attributes(attributes)= content

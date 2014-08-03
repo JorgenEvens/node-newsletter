@@ -1,0 +1,40 @@
+$border-radius = 10px
+
+table
+	width: 100%
+	border-spacing: 0
+
+thead
+	$border = 1px solid $highlight2
+	color: white
+
+	th
+		border-top: $border
+		padding: 0.8em 2em 0.5em 2em
+		background: $highlight1
+		background: linear-gradient(top, 0% lighten( $highlight1, 25% ), $border-radius*2 $highlight1 );
+		border-bottom: 3px solid $highlight2
+
+
+	th:first-child
+		border-top-left-radius: $border-radius
+
+	th:last-child
+		border-top-right-radius: $border-radius
+
+tfoot
+	tr td
+		border-top: 2px solid darken( white, 10% )
+		background: darken( white, 3% )
+
+
+tr
+	border-right: 1px solid $highlight2
+	border-left: 1px solid $highlight2
+
+	&:nth-child(2n) td
+		background: darken( white, 3% )
+
+td
+	padding: 0.8em 2em
+	background: white

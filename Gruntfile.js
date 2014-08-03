@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				options: {
 					env: { PORT: 9090 },
 					ext: 'js,jade',
-					watch: ['src'],
+					watch: ['!src/js','!src/public','src'],
 					callback: function(nodemon) {
 						var fs = require('fs');
 
@@ -61,10 +61,30 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			},
+			js: {
+				files: [
+					'!src/js/**/*.min.js',
+					'!src/js/**/*.debug.js',
+					'src/js/**/*.js'
+				],
+				tasks: ['browserify:core'],
+				options: {
+					spawn: false,
+					livereload: true
+				}
+			},
 			app: {
 				files: ['.rebooted'],
 				options: {
 					livereload: true
+				}
+			}
+		},
+
+		browserify: {
+			core: {
+				files: {
+					'src/public/js/core.debug.js': ['src/js/core.js']
 				}
 			}
 		}
@@ -76,6 +96,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-concurrent');
+	grunt.loadNpmTasks('grunt-browserify');
 
 	// Default task(s).
 	grunt.registerTask('default', [ 'concurrent' ]);

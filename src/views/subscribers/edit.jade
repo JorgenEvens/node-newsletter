@@ -1,0 +1,14 @@
+extends /page
+
+include /components/form
+
+block content
+	- var is_create = ( action == 'create' )
+
+	section.wrap.row
+		form.col.col-2-3(action='/subscribers/'+(is_create?'create':subscriber.id),method='POST')
+			+form-text('name','Name','text')(value=subscriber.name)
+			+form-text('email','E-mailaddress','text')(value=subscriber.email)
+			+form-checkbox('Confirmed','confirmed',subscriber.confirmed)
+			+form-submit(action,'Opslaan')(value=subscriber.id)
+

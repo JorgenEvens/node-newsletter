@@ -42,12 +42,11 @@ grid(grid-columns=12,gutter-width=1.6%)
 					&:first-child
 						margin-left: $width
 
-
 		@media only screen and (max-width: 480px)
-			for $cols in (2..grid-columns)
-				for $col in (1...$cols)
-					if round( ( $cols / $col ) ) == ($cols/$col)
-						.{$col}-{$cols}
-							+cache('grid-mobile-100')
-								width: 100%
-								margin: 0
+			.col
+				width: 100% - gutter-width
+				max-width: 100% - gutter-width
+				margin: 0 (gutter-width/2)
+
+				&:first-child
+					margin: 0 (gutter-width/2)

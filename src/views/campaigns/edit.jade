@@ -1,0 +1,48 @@
+extends /page
+
+include /components/form
+
+block content
+	- var is_create = ( action == 'create' )
+
+	section.wrap.row
+		form.col.col-2-3(action='/campaigns/'+(is_create?'create':campaign.id),method='POST')
+			if !is_create
+				+form-text('id','Campaign ID','text')(disabled='disabled',value=campaign.id)
+			+form-text('title','Campaign title','text')(placeholder='New Campaign',value=campaign.title)
+			+form-text('sender','Send from','text')(placeholder='newsletter@example.com',value=campaign.sender)
+			+form-text('template','Template','number')(value=campaign.template)
+			+form-checkbox('active','Campaign active',campaign.active)
+			+form-text('content', 'Campaign content','hidden')(rows=10,id='f-content',value=campaign.content)
+			+form-text('scheduled', 'Scheduled start','date')(value=campaign.scheduled)
+			if( !is_create )
+				+form-text('started', 'Started','date')(disabled="disabled",value=campaign.started)
+				+form-text('finished', 'Finished','date')(disabled="disabled",value=campaign.finished)
+			+form-submit(action,'Save')(value=campaign.id)
+
+			#editor.
+				THis is a test
+
+block scripts
+	script(src='//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js')
+	script.
+		(function() {
+			var ready = function() {
+					var editor = document.createElement('div');
+					content.parentNode.appendChild(editor);
+
+					editor = ace.edit(editor);
+					editor.getSession().setValue(content.value);
+					editor.setTheme('ace/theme/chrome');
+					editor.getSession().setMode('ace/mode/jade');
+					editor.getSession().on('change', function() {
+						content.value = editor.getSession().getValue();	
+					})
+				},
+				content = document.getElementById('f-content');
+
+			if( window.attachEvent )
+				window.attachEvent('onload', ready);
+			else if( window.addEventListener )
+				window.addEventListener('load', ready);	
+		}())

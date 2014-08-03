@@ -1,0 +1,9 @@
+mixin template(template)
+	- var j = require('jade')
+	- try { j = j.compile(template)(attributes); } catch( e ) { j=e; }
+	- console.log( j );
+	if !!j && !( j instanceof Error )
+		!= j
+	else
+		.error Template compilation failed
+			pre= j

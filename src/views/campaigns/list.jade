@@ -1,0 +1,30 @@
+extends /page
+
+block content
+	section.wrap.row
+		if campaigns && campaigns.length > 0
+			form(action="?",method="POST")
+				table.col.col-5-6
+					thead
+						tr
+							th Title
+							th Created
+							th Actions
+
+					tfoot
+						tr
+							td(colspan=3)
+								a(href='/campaigns/create') Create a new campaign
+
+					tbody
+						each campaign in campaigns
+							tr
+								td
+									a(href='/campaigns/'+campaign.id)= campaign.title
+								td= campaign.createdAt
+								td
+									button(type='submit',name="delete",value=campaign.id) delete
+									button(type='submit',name='edit',value=campaign.id) edit
+		else
+			p.col You have not yet created a campagin, 
+				a(href='/campaigns/create') create one now.

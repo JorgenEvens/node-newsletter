@@ -6,3 +6,6 @@ nav.wrap.main
 	ul.col
 		+item('Home','/')
 		+item('Campaigns','/campaigns')
+		+item('Subscribers','/subscribers')
+		if user.role == 'admin'
+			+item('Administrators', '/admins')

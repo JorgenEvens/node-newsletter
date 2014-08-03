@@ -1,0 +1,10 @@
+extends /page
+
+include /components/template
+
+block content
+	section.wrap.row
+		h1= campaign.title
+
+		.col.col-4-6.offset-1-6
+			+template(campaign.content)(name=user.username)
