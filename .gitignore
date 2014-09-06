@@ -30,3 +30,5 @@ node_modules
 # Do not include minified files
 src/public/css/*.min.css
 src/public/js/*.min.js
+
+.DS_Store
